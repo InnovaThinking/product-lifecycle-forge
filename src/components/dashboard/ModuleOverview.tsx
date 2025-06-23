@@ -1,60 +1,48 @@
 
 import { ModuleCard } from "@/components/ui/module-card"
-import { Progress } from "@/components/ui/progress"
-import { Badge } from "@/components/ui/badge"
 import { Search, Book, Code, Calendar, List } from "lucide-react"
 import { useNavigate } from "react-router-dom"
 
 const modules = [
   {
-    id: "discovery",
     title: "Descoberta",
-    description: "Research, personas e oportunidades",
-    icon: <Search className="h-5 w-5" />,
-    gradient: "bg-gradient-to-br from-discovery-500 to-discovery-600",
-    progress: 75,
-    activeItems: 12,
-    route: "/discovery"
+    description: "Research, personas,e oportunidades de mercado",
+    icon: <Search className="h-6 w-6" />,
+    gradient: "bg-gradient-to-br from-discovery-600 to-blue-600",
+    url: "/discovery",
+    stats: { active: 5, completed: 12 }
   },
   {
-    id: "validation",
     title: "Validação",
-    description: "Hipóteses e experimentos",
-    icon: <Book className="h-5 w-5" />,
-    gradient: "bg-gradient-to-br from-validation-500 to-validation-600",
-    progress: 60,
-    activeItems: 8,
-    route: "/validation"
+    description: "Hipóteses, experimentos e testes A/B",
+    icon: <Book className="h-6 w-6" />,
+    gradient: "bg-gradient-to-br from-validation-600 to-purple-600",
+    url: "/validation",
+    stats: { active: 3, completed: 8 }
   },
   {
-    id: "development",
     title: "Desenvolvimento",
-    description: "Features e roadmap",
-    icon: <Code className="h-5 w-5" />,
-    gradient: "bg-gradient-to-br from-development-500 to-development-600",
-    progress: 85,
-    activeItems: 24,
-    route: "/development"
+    description: "Roadmap, features e releases",
+    icon: <Code className="h-6 w-6" />,
+    gradient: "bg-gradient-to-br from-development-600 to-emerald-600",
+    url: "/development",
+    stats: { active: 12, completed: 24 }
   },
   {
-    id: "launch",
     title: "Lançamento",
-    description: "Go-to-market e execução",
-    icon: <Calendar className="h-5 w-5" />,
-    gradient: "bg-gradient-to-br from-launch-500 to-launch-600",
-    progress: 40,
-    activeItems: 5,
-    route: "/launch"
+    description: "Go-to-market e execução de launches",
+    icon: <Calendar className="h-6 w-6" />,
+    gradient: "bg-gradient-to-br from-launch-600 to-orange-600",
+    url: "/launch",
+    stats: { active: 2, completed: 6 }
   },
   {
-    id: "management",
     title: "Gestão",
-    description: "Analytics e performance",
-    icon: <List className="h-5 w-5" />,
-    gradient: "bg-gradient-to-br from-management-500 to-management-600",
-    progress: 90,
-    activeItems: 18,
-    route: "/management"
+    description: "Analytics, UX e gestão de portfólio",
+    icon: <List className="h-6 w-6" />,
+    gradient: "bg-gradient-to-br from-management-600 to-cyan-600",
+    url: "/management",
+    stats: { active: 8, completed: 15 }
   }
 ]
 
@@ -63,38 +51,39 @@ export function ModuleOverview() {
 
   return (
     <div className="space-y-6">
-      <div>
-        <h2 className="text-2xl font-bold mb-2">Module Overview</h2>
-        <p className="text-muted-foreground">
-          Monitor progress across all product lifecycle modules
-        </p>
+      <div className="flex items-center justify-between">
+        <div>
+          <h2 className="text-2xl font-bold">Product Modules</h2>
+          <p className="text-muted-foreground">Manage your product lifecycle across all phases</p>
+        </div>
       </div>
-
+      
       <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-        {modules.map((module) => (
-          <ModuleCard
-            key={module.id}
-            title={module.title}
-            description={module.description}
-            icon={module.icon}
-            gradient={module.gradient}
-            onClick={() => navigate(module.route)}
+        {modules.map((module, index) => (
+          <div
+            key={module.title}
+            className="animate-slide-up"
+            style={{ animationDelay: `${index * 100}ms` }}
           >
-            <div className="space-y-3">
-              <div className="flex items-center justify-between text-sm">
-                <span className="text-muted-foreground">Progress</span>
-                <span className="font-medium">{module.progress}%</span>
+            <ModuleCard
+              title={module.title}
+              description={module.description}
+              icon={module.icon}
+              gradient={module.gradient}
+              onClick={() => navigate(module.url)}
+            >
+              <div className="flex items-center justify-between pt-4 border-t border-border/40">
+                <div className="text-center">
+                  <div className="text-lg font-bold text-primary">{module.stats.active}</div>
+                  <div className="text-xs text-muted-foreground">Active</div>
+                </div>
+                <div className="text-center">
+                  <div className="text-lg font-bold text-muted-foreground">{module.stats.completed}</div>
+                  <div className="text-xs text-muted-foreground">Completed</div>
+                </div>
               </div>
-              <Progress value={module.progress} className="h-2" />
-              
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Active Items</span>
-                <Badge variant="secondary" className="text-xs">
-                  {module.activeItems}
-                </Badge>
-              </div>
-            </div>
-          </ModuleCard>
+            </ModuleCard>
+          </div>
         ))}
       </div>
     </div>
