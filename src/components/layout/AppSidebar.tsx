@@ -101,10 +101,12 @@ const quickAccess = [
 ]
 
 export function AppSidebar() {
-  const { collapsed } = useSidebar()
+  const { state } = useSidebar()
   const location = useLocation()
   const currentPath = location.pathname
   const [expandedGroups, setExpandedGroups] = useState<string[]>(['modules'])
+  
+  const isCollapsed = state === "collapsed"
 
   const isActive = (path: string) => currentPath === path || currentPath.startsWith(path + '/')
   const isGroupExpanded = (groupId: string) => expandedGroups.includes(groupId)
@@ -127,13 +129,13 @@ export function AppSidebar() {
     <Sidebar
       className={cn(
         "border-r transition-all duration-300",
-        collapsed ? "w-16" : "w-72"
+        isCollapsed ? "w-16" : "w-72"
       )}
-      collapsible
+      collapsible="icon"
     >
       <div className="flex h-14 items-center border-b px-4">
         <SidebarTrigger className="ml-auto" />
-        {!collapsed && (
+        {!isCollapsed && (
           <div className="flex items-center gap-2">
             <div className="h-8 w-8 rounded-lg bg-gradient-to-br from-primary to-purple-600"></div>
             <span className="font-semibold text-lg gradient-text">ProductOS</span>
@@ -144,7 +146,7 @@ export function AppSidebar() {
       <SidebarContent className="px-2 py-4">
         {/* Quick Access */}
         <SidebarGroup>
-          {!collapsed && <SidebarGroupLabel>Quick Access</SidebarGroupLabel>}
+          {!isCollapsed && <SidebarGroupLabel>Quick Access</SidebarGroupLabel>}
           <SidebarGroupContent>
             <SidebarMenu>
               {quickAccess.map((item) => (
@@ -156,7 +158,7 @@ export function AppSidebar() {
                       className={getNavCls}
                     >
                       <item.icon className="h-4 w-4" />
-                      {!collapsed && <span>{item.title}</span>}
+                      {!isCollapsed && <span>{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -171,15 +173,15 @@ export function AppSidebar() {
             className="flex items-center justify-between cursor-pointer"
             onClick={() => toggleGroup('modules')}
           >
-            {!collapsed && <SidebarGroupLabel>Modules</SidebarGroupLabel>}
-            {!collapsed && (
+            {!isCollapsed && <SidebarGroupLabel>Modules</SidebarGroupLabel>}
+            {!isCollapsed && (
               isGroupExpanded('modules') ? 
                 <ChevronDown className="h-4 w-4" /> : 
                 <ChevronRight className="h-4 w-4" />
             )}
           </div>
           
-          {(isGroupExpanded('modules') || collapsed) && (
+          {(isGroupExpanded('modules') || isCollapsed) && (
             <SidebarGroupContent>
               <SidebarMenu>
                 {moduleItems.map((item) => {
@@ -196,13 +198,13 @@ export function AppSidebar() {
                             )}
                           >
                             <item.icon className="h-4 w-4" />
-                            {!collapsed && <span>{item.title}</span>}
+                            {!isCollapsed && <span>{item.title}</span>}
                           </NavLink>
                         </SidebarMenuButton>
                       </SidebarMenuItem>
                       
                       {/* Sub-items */}
-                      {!collapsed && isModuleActive && item.children && (
+                      {!isCollapsed && isModuleActive && item.children && (
                         <div className="ml-6 mt-1 space-y-1">
                           {item.children.map((child) => (
                             <SidebarMenuItem key={child.title}>
