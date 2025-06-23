@@ -118,11 +118,13 @@ export function AppSidebar() {
   const isGroupExpanded = (groupId: string) => expandedGroups.includes(groupId)
   
   const toggleGroup = (groupId: string) => {
-    setExpandedGroups(prev => 
-      prev.includes(groupId) 
-        ? prev.filter(id => id !== groupId)
-        : [...prev, groupId]
-    )
+    if (!isCollapsed) {
+      setExpandedGroups(prev => 
+        prev.includes(groupId) 
+          ? prev.filter(id => id !== groupId)
+          : [...prev, groupId]
+      )
+    }
   }
 
   const getNavCls = ({ isActive }: { isActive: boolean }) =>
@@ -165,7 +167,7 @@ export function AppSidebar() {
             <SidebarMenu className="space-y-1">
               {quickAccess.map((item) => (
                 <SidebarMenuItem key={item.title}>
-                  <SidebarMenuButton asChild>
+                  <SidebarMenuButton asChild tooltip={isCollapsed ? item.title : undefined}>
                     <NavLink 
                       to={item.url} 
                       end={item.url === "/"} 
@@ -183,88 +185,84 @@ export function AppSidebar() {
 
         {/* Modules */}
         <SidebarGroup>
-          <div 
-            className="flex items-center justify-between cursor-pointer group mb-3"
-            onClick={() => toggleGroup('modules')}
-          >
-            {!isCollapsed && (
+          {!isCollapsed && (
+            <div 
+              className="flex items-center justify-between cursor-pointer group mb-3"
+              onClick={() => toggleGroup('modules')}
+            >
               <SidebarGroupLabel className="text-xs font-semibold tracking-wide text-muted-foreground/80 group-hover:text-foreground transition-colors">
                 Modules
               </SidebarGroupLabel>
-            )}
-            {!isCollapsed && (
               <div className="transition-transform duration-300 group-hover:scale-110">
                 {isGroupExpanded('modules') ? 
                   <ChevronDown className="h-3 w-3 text-muted-foreground" /> : 
                   <ChevronRight className="h-3 w-3 text-muted-foreground" />
                 }
               </div>
-            )}
-          </div>
-          
-          {(isGroupExpanded('modules') || isCollapsed) && (
-            <SidebarGroupContent>
-              <SidebarMenu className="space-y-2">
-                {moduleItems.map((item, index) => {
-                  const isModuleActive = isActive(item.url)
-                  return (
-                    <div key={item.title} className="animate-slide-up" style={{ animationDelay: `${index * 50}ms` }}>
-                      <SidebarMenuItem>
-                        <SidebarMenuButton asChild>
-                          <NavLink 
-                            to={item.url} 
-                            className={cn(
-                              "relative group rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-300 hover:scale-[1.02]",
-                              isModuleActive 
-                                ? `bg-gradient-to-r ${item.gradient} text-primary border border-primary/20 shadow-lg shadow-primary/5` 
-                                : "hover:bg-accent/50 hover:text-accent-foreground"
-                            )}
-                          >
-                            <div className="flex items-center gap-3">
-                              <div className={cn(
-                                "p-1.5 rounded-lg transition-all duration-300",
-                                isModuleActive 
-                                  ? "bg-primary/10 text-primary" 
-                                  : "group-hover:bg-accent/50"
-                              )}>
-                                <item.icon className="h-4 w-4" />
-                              </div>
-                              {!isCollapsed && <span>{item.title}</span>}
-                            </div>
-                            {isModuleActive && (
-                              <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/0 rounded-xl pointer-events-none" />
-                            )}
-                          </NavLink>
-                        </SidebarMenuButton>
-                      </SidebarMenuItem>
-                      
-                      {/* Sub-items */}
-                      {!isCollapsed && isModuleActive && item.children && (
-                        <div className="ml-6 mt-2 space-y-1 animate-fade-in">
-                          {item.children.map((child, childIndex) => (
-                            <SidebarMenuItem key={child.title}>
-                              <SidebarMenuButton asChild size="sm">
-                                <NavLink 
-                                  to={child.url}
-                                  className={cn(
-                                    "text-sm text-muted-foreground hover:text-foreground transition-all duration-300 rounded-lg px-3 py-2 hover:bg-accent/30 hover:scale-[1.01]",
-                                    isActive(child.url) && "text-primary font-medium bg-primary/5"
-                                  )}
-                                  style={{ animationDelay: `${childIndex * 30}ms` }}
-                                >
-                                  <span>{child.title}</span>
-                                </NavLink>
-                              </SidebarMenuButton>
-                            </SidebarMenuItem>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-                  )
-                })}
-              </SidebarMenu>
-            </SidebarGroupContent>
+            </div>
           )}
+          
+          <SidebarGroupContent>
+            <SidebarMenu className="space-y-2">
+              {moduleItems.map((item, index) => {
+                const isModuleActive = isActive(item.url)
+                return (
+                  <div key={item.title} className="animate-slide-up" style={{ animationDelay: `${index * 50}ms` }}>
+                    <SidebarMenuItem>
+                      <SidebarMenuButton asChild tooltip={isCollapsed ? item.title : undefined}>
+                        <NavLink 
+                          to={item.url} 
+                          className={cn(
+                            "relative group rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-300 hover:scale-[1.02]",
+                            isModuleActive 
+                              ? `bg-gradient-to-r ${item.gradient} text-primary border border-primary/20 shadow-lg shadow-primary/5` 
+                              : "hover:bg-accent/50 hover:text-accent-foreground"
+                          )}
+                        >
+                          <div className="flex items-center gap-3">
+                            <div className={cn(
+                              "p-1.5 rounded-lg transition-all duration-300",
+                              isModuleActive 
+                                ? "bg-primary/10 text-primary" 
+                                : "group-hover:bg-accent/50"
+                            )}>
+                              <item.icon className="h-4 w-4" />
+                            </div>
+                            {!isCollapsed && <span>{item.title}</span>}
+                          </div>
+                          {isModuleActive && (
+                            <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/0 rounded-xl pointer-events-none" />
+                          )}
+                        </NavLink>
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                    
+                    {/* Sub-items - only show when expanded and module is active */}
+                    {!isCollapsed && isModuleActive && item.children && (isGroupExpanded('modules') || isCollapsed) && (
+                      <div className="ml-6 mt-2 space-y-1 animate-fade-in">
+                        {item.children.map((child, childIndex) => (
+                          <SidebarMenuItem key={child.title}>
+                            <SidebarMenuButton asChild size="sm">
+                              <NavLink 
+                                to={child.url}
+                                className={cn(
+                                  "text-sm text-muted-foreground hover:text-foreground transition-all duration-300 rounded-lg px-3 py-2 hover:bg-accent/30 hover:scale-[1.01]",
+                                  isActive(child.url) && "text-primary font-medium bg-primary/5"
+                                )}
+                                style={{ animationDelay: `${childIndex * 30}ms` }}
+                              >
+                                <span>{child.title}</span>
+                              </NavLink>
+                            </SidebarMenuButton>
+                          </SidebarMenuItem>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )
+              })}
+            </SidebarMenu>
+          </SidebarGroupContent>
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
