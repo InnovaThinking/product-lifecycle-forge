@@ -155,11 +155,11 @@ export function AppSidebar() {
         )}
       </div>
 
-      <SidebarContent className="px-3 py-6 space-y-6">
+      <SidebarContent className="px-2 py-6 space-y-6">
         {/* Quick Access */}
         <SidebarGroup>
           {!isCollapsed && (
-            <SidebarGroupLabel className="text-xs font-semibold tracking-wide text-muted-foreground/80 mb-3">
+            <SidebarGroupLabel className="text-xs font-semibold tracking-wide text-muted-foreground/80 mb-3 px-2">
               Acesso Rápido
             </SidebarGroupLabel>
           )}
@@ -171,9 +171,14 @@ export function AppSidebar() {
                     <NavLink 
                       to={item.url} 
                       end={item.url === "/"} 
-                      className={getNavCls}
+                      className={cn(
+                        "flex items-center gap-3 px-3 py-2 rounded-lg transition-all duration-300",
+                        getNavCls
+                      )}
                     >
-                      <item.icon className="h-4 w-4" />
+                      <div className="flex items-center justify-center w-5 h-5">
+                        <item.icon className="h-4 w-4" />
+                      </div>
                       {!isCollapsed && <span>{item.title}</span>}
                     </NavLink>
                   </SidebarMenuButton>
@@ -187,7 +192,7 @@ export function AppSidebar() {
         <SidebarGroup>
           {!isCollapsed && (
             <div 
-              className="flex items-center justify-between cursor-pointer group mb-3"
+              className="flex items-center justify-between cursor-pointer group mb-3 px-2"
               onClick={() => toggleGroup('modules')}
             >
               <SidebarGroupLabel className="text-xs font-semibold tracking-wide text-muted-foreground/80 group-hover:text-foreground transition-colors">
@@ -213,23 +218,21 @@ export function AppSidebar() {
                         <NavLink 
                           to={item.url} 
                           className={cn(
-                            "relative group rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-300",
+                            "relative group rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-300 flex items-center gap-3",
                             isModuleActive 
                               ? `bg-gradient-to-r ${item.gradient} text-primary border border-primary/20` 
                               : "hover:bg-accent/50 hover:text-accent-foreground"
                           )}
                         >
-                          <div className="flex items-center gap-3">
-                            <div className={cn(
-                              "p-1.5 rounded-lg transition-all duration-300",
-                              isModuleActive 
-                                ? "bg-primary/10 text-primary" 
-                                : "group-hover:bg-accent/50"
-                            )}>
-                              <item.icon className="h-4 w-4" />
-                            </div>
-                            {!isCollapsed && <span>{item.title}</span>}
+                          <div className={cn(
+                            "p-1.5 rounded-lg transition-all duration-300 flex items-center justify-center w-7 h-7",
+                            isModuleActive 
+                              ? "bg-primary/10 text-primary" 
+                              : "group-hover:bg-accent/50"
+                          )}>
+                            <item.icon className="h-4 w-4" />
                           </div>
+                          {!isCollapsed && <span>{item.title}</span>}
                         </NavLink>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
