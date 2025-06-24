@@ -136,21 +136,21 @@ export function AppSidebar() {
   return (
     <Sidebar
       className={cn(
-        "glass-panel border-r transition-all duration-500 relative z-40",
+        "border-r transition-all duration-300",
         isCollapsed ? "w-16" : "w-72"
       )}
       collapsible="icon"
     >
-      <div className="flex h-16 items-center border-b border-border/50 px-4 bg-gradient-to-r from-background/50 to-background/80 backdrop-blur-xl">
-        <SidebarTrigger className="ml-auto hover:bg-accent/50 transition-all duration-300 hover:scale-110" />
+      <div className="flex h-16 items-center border-b px-4">
+        <SidebarTrigger className="ml-auto" />
         {!isCollapsed && (
-          <div className="flex items-center gap-3 animate-fade-in">
+          <div className="flex items-center gap-3">
             <div className="relative h-9 w-9 rounded-xl bg-gradient-to-br from-primary via-purple-600 to-pink-600 p-0.5">
               <div className="h-full w-full rounded-[10px] bg-background flex items-center justify-center">
                 <Sparkles className="h-4 w-4 text-primary" />
               </div>
             </div>
-            <span className="font-bold text-xl gradient-text">ProductOS</span>
+            <span className="font-bold text-xl">ProductOS</span>
           </div>
         )}
       </div>
@@ -207,15 +207,15 @@ export function AppSidebar() {
               {moduleItems.map((item, index) => {
                 const isModuleActive = isActive(item.url)
                 return (
-                  <div key={item.title} className="animate-slide-up" style={{ animationDelay: `${index * 50}ms` }}>
+                  <div key={item.title}>
                     <SidebarMenuItem>
                       <SidebarMenuButton asChild tooltip={isCollapsed ? item.title : undefined}>
                         <NavLink 
                           to={item.url} 
                           className={cn(
-                            "relative group rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-300 hover:scale-[1.02]",
+                            "relative group rounded-xl px-3 py-2.5 text-sm font-medium transition-all duration-300",
                             isModuleActive 
-                              ? `bg-gradient-to-r ${item.gradient} text-primary border border-primary/20 shadow-lg shadow-primary/5` 
+                              ? `bg-gradient-to-r ${item.gradient} text-primary border border-primary/20` 
                               : "hover:bg-accent/50 hover:text-accent-foreground"
                           )}
                         >
@@ -230,26 +230,22 @@ export function AppSidebar() {
                             </div>
                             {!isCollapsed && <span>{item.title}</span>}
                           </div>
-                          {isModuleActive && (
-                            <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-white/0 rounded-xl pointer-events-none" />
-                          )}
                         </NavLink>
                       </SidebarMenuButton>
                     </SidebarMenuItem>
                     
                     {/* Sub-items - only show when expanded and module is active */}
                     {!isCollapsed && isModuleActive && item.children && (isGroupExpanded('modules') || isCollapsed) && (
-                      <div className="ml-6 mt-2 space-y-1 animate-fade-in">
-                        {item.children.map((child, childIndex) => (
+                      <div className="ml-6 mt-2 space-y-1">
+                        {item.children.map((child) => (
                           <SidebarMenuItem key={child.title}>
                             <SidebarMenuButton asChild size="sm">
                               <NavLink 
                                 to={child.url}
                                 className={cn(
-                                  "text-sm text-muted-foreground hover:text-foreground transition-all duration-300 rounded-lg px-3 py-2 hover:bg-accent/30 hover:scale-[1.01]",
+                                  "text-sm text-muted-foreground hover:text-foreground transition-all duration-300 rounded-lg px-3 py-2 hover:bg-accent/30",
                                   isActive(child.url) && "text-primary font-medium bg-primary/5"
                                 )}
-                                style={{ animationDelay: `${childIndex * 30}ms` }}
                               >
                                 <span>{child.title}</span>
                               </NavLink>

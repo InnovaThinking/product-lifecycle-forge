@@ -24,11 +24,11 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <SidebarProvider>
-          <div className="min-h-screen flex w-full bg-background">
+          <div className="min-h-screen flex w-full">
             <AppSidebar />
-            <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
+            <div className="flex-1 flex flex-col">
               <Header />
-              <main className="flex-1 p-6 overflow-auto bg-background">
+              <main className="flex-1 p-6 overflow-auto">
                 <div className="max-w-full">
                   <Routes>
                     <Route path="/" element={<Index />} />
