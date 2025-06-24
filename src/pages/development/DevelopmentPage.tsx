@@ -15,41 +15,41 @@ const DevelopmentPage = () => {
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-development-700">Development Hub</h1>
+          <h1 className="text-3xl font-bold text-development-700">Central de Desenvolvimento</h1>
           <p className="text-muted-foreground mt-2">
-            Product roadmap, features, and development workflow
+            Roteiro do produto, funcionalidades e fluxo de desenvolvimento
           </p>
         </div>
         <Button className="bg-development-600 hover:bg-development-700">
           <Plus className="h-4 w-4 mr-2" />
-          New Feature
+          Nova Funcionalidade
         </Button>
       </div>
 
       {/* Stats */}
       <div className="grid gap-4 md:grid-cols-4">
         <StatsCard
-          title="Active Features"
+          title="Funcionalidades Ativas"
           value="24"
-          change={{ value: "+8 this sprint", trend: "up" }}
+          change={{ value: "+8 nesta sprint", trend: "up" }}
           icon={<Code className="h-4 w-4" />}
         />
         <StatsCard
-          title="Sprint Velocity"
+          title="Velocidade da Sprint"
           value="42 SP"
-          change={{ value: "+15% vs last sprint", trend: "up" }}
+          change={{ value: "+15% vs sprint anterior", trend: "up" }}
           icon={<Target className="h-4 w-4" />}
         />
         <StatsCard
-          title="Code Coverage"
+          title="Cobertura de Código"
           value="87%"
-          change={{ value: "+3% improvement", trend: "up" }}
+          change={{ value: "+3% de melhoria", trend: "up" }}
           icon={<GitBranch className="h-4 w-4" />}
         />
         <StatsCard
-          title="Tech Debt"
+          title="Débito Técnico"
           value="12"
-          change={{ value: "-3 items resolved", trend: "up" }}
+          change={{ value: "-3 itens resolvidos", trend: "up" }}
           icon={<Folder className="h-4 w-4" />}
         />
       </div>
@@ -64,8 +64,8 @@ const DevelopmentPage = () => {
                 <Calendar className="h-5 w-5 text-development-600" />
               </div>
               <div>
-                <CardTitle className="text-lg">Product Roadmap</CardTitle>
-                <CardDescription>Strategic feature planning</CardDescription>
+                <CardTitle className="text-lg">Roteiro do Produto</CardTitle>
+                <CardDescription>Planejamento estratégico de funcionalidades</CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -73,27 +73,27 @@ const DevelopmentPage = () => {
             <div className="space-y-4">
               <div className="space-y-3">
                 {[
-                  { quarter: "Q1 2024", features: 8, progress: 75 },
-                  { quarter: "Q2 2024", features: 12, progress: 45 },
-                  { quarter: "Q3 2024", features: 6, progress: 10 }
+                  { quarter: "T1 2024", features: 8, progress: 75 },
+                  { quarter: "T2 2024", features: 12, progress: 45 },
+                  { quarter: "T3 2024", features: 6, progress: 10 }
                 ].map((quarter, index) => (
                   <div key={index} className="space-y-2">
                     <div className="flex items-center justify-between">
                       <span className="text-sm font-medium">{quarter.quarter}</span>
                       <Badge variant="secondary" className="text-xs">
-                        {quarter.features} features
+                        {quarter.features} funcionalidades
                       </Badge>
                     </div>
                     <Progress value={quarter.progress} className="h-2" />
                     <div className="text-xs text-muted-foreground">
-                      {quarter.progress}% complete
+                      {quarter.progress}% completo
                     </div>
                   </div>
                 ))}
               </div>
               
               <Button variant="outline" size="sm" className="w-full">
-                View Full Roadmap
+                Ver Roteiro Completo
               </Button>
             </div>
           </CardContent>
@@ -107,8 +107,8 @@ const DevelopmentPage = () => {
                 <Code className="h-5 w-5 text-development-600" />
               </div>
               <div>
-                <CardTitle className="text-lg">Feature Management</CardTitle>
-                <CardDescription>Active development items</CardDescription>
+                <CardTitle className="text-lg">Gestão de Funcionalidades</CardTitle>
+                <CardDescription>Itens de desenvolvimento ativos</CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -117,29 +117,29 @@ const DevelopmentPage = () => {
               <div className="grid grid-cols-2 gap-4 text-center">
                 <div>
                   <div className="text-lg font-bold text-blue-600">6</div>
-                  <div className="text-xs text-muted-foreground">In Progress</div>
+                  <div className="text-xs text-muted-foreground">Em Progresso</div>
                 </div>
                 <div>
                   <div className="text-lg font-bold text-yellow-600">4</div>
-                  <div className="text-xs text-muted-foreground">In Review</div>
+                  <div className="text-xs text-muted-foreground">Em Revisão</div>
                 </div>
               </div>
               
               <div className="space-y-2">
-                <div className="text-sm text-muted-foreground">Current Sprint</div>
+                <div className="text-sm text-muted-foreground">Sprint Atual</div>
                 <div className="space-y-2">
                   {[
-                    { name: "Mobile Payment Integration", priority: "High", progress: 80 },
-                    { name: "Advanced Search Filters", priority: "Medium", progress: 45 },
-                    { name: "User Profile Enhancement", priority: "Low", progress: 25 }
+                    { name: "Integração de Pagamento Mobile", priority: "Alta", progress: 80 },
+                    { name: "Filtros de Busca Avançada", priority: "Média", progress: 45 },
+                    { name: "Melhoria do Perfil do Usuário", priority: "Baixa", progress: 25 }
                   ].map((feature, index) => (
                     <div key={index} className="p-2 bg-muted/50 rounded space-y-1">
                       <div className="flex items-center justify-between">
                         <span className="text-xs font-medium">{feature.name}</span>
                         <Badge 
                           variant={
-                            feature.priority === "High" ? "destructive" : 
-                            feature.priority === "Medium" ? "default" : "secondary"
+                            feature.priority === "Alta" ? "destructive" : 
+                            feature.priority === "Média" ? "default" : "secondary"
                           }
                           className="text-xs"
                         >
@@ -163,8 +163,8 @@ const DevelopmentPage = () => {
                 <GitBranch className="h-5 w-5 text-development-600" />
               </div>
               <div>
-                <CardTitle className="text-lg">Release Management</CardTitle>
-                <CardDescription>Version control & deployment</CardDescription>
+                <CardTitle className="text-lg">Gestão de Lançamentos</CardTitle>
+                <CardDescription>Controle de versões e implantação</CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -174,22 +174,22 @@ const DevelopmentPage = () => {
                 {[
                   { 
                     version: "v2.1.0", 
-                    status: "Ready", 
-                    date: "Mar 15", 
+                    status: "Pronto", 
+                    date: "15 Mar", 
                     features: 8,
                     statusColor: "bg-green-500"
                   },
                   { 
                     version: "v2.0.5", 
-                    status: "Testing", 
-                    date: "Mar 8", 
+                    status: "Testando", 
+                    date: "8 Mar", 
                     features: 3,
                     statusColor: "bg-yellow-500"
                   },
                   { 
                     version: "v2.2.0", 
-                    status: "Planning", 
-                    date: "Apr 1", 
+                    status: "Planejando", 
+                    date: "1 Abr", 
                     features: 12,
                     statusColor: "bg-blue-500"
                   }
@@ -200,7 +200,7 @@ const DevelopmentPage = () => {
                       <div>
                         <div className="font-medium text-sm">{release.version}</div>
                         <div className="text-xs text-muted-foreground">
-                          {release.features} features • {release.date}
+                          {release.features} funcionalidades • {release.date}
                         </div>
                       </div>
                     </div>
@@ -212,7 +212,7 @@ const DevelopmentPage = () => {
               </div>
               
               <Button variant="outline" size="sm" className="w-full">
-                View All Releases
+                Ver Todos os Lançamentos
               </Button>
             </div>
           </CardContent>
@@ -228,8 +228,8 @@ const DevelopmentPage = () => {
                 <Target className="h-5 w-5 text-development-600" />
               </div>
               <div>
-                <CardTitle>Development Workflow</CardTitle>
-                <CardDescription>Team performance and metrics</CardDescription>
+                <CardTitle>Fluxo de Desenvolvimento</CardTitle>
+                <CardDescription>Performance da equipe e métricas</CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -239,21 +239,21 @@ const DevelopmentPage = () => {
                 <div className="text-center">
                   <div className="text-2xl font-bold">42</div>
                   <div className="text-sm text-muted-foreground">Story Points</div>
-                  <div className="text-xs text-green-600">+15% vs last sprint</div>
+                  <div className="text-xs text-green-600">+15% vs sprint anterior</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-2xl font-bold">2.3d</div>
-                  <div className="text-sm text-muted-foreground">Avg Cycle Time</div>
-                  <div className="text-xs text-green-600">-0.5d improvement</div>
+                  <div className="text-2xl font-bold">2,3d</div>
+                  <div className="text-sm text-muted-foreground">Tempo Médio do Ciclo</div>
+                  <div className="text-xs text-green-600">-0,5d de melhoria</div>
                 </div>
               </div>
               
               <div className="space-y-2">
-                <div className="text-sm text-muted-foreground">Sprint Progress</div>
+                <div className="text-sm text-muted-foreground">Progresso da Sprint</div>
                 <div className="space-y-1">
                   <div className="flex justify-between text-sm">
-                    <span>Sprint 24 Progress</span>
-                    <span>78% (Day 8/10)</span>
+                    <span>Progresso Sprint 24</span>
+                    <span>78% (Dia 8/10)</span>
                   </div>
                   <Progress value={78} className="h-2" />
                 </div>
@@ -262,15 +262,15 @@ const DevelopmentPage = () => {
               <div className="grid grid-cols-3 gap-2 text-center text-xs">
                 <div>
                   <div className="font-bold">18</div>
-                  <div className="text-muted-foreground">Todo</div>
+                  <div className="text-muted-foreground">A Fazer</div>
                 </div>
                 <div>
                   <div className="font-bold">12</div>
-                  <div className="text-muted-foreground">In Progress</div>
+                  <div className="text-muted-foreground">Em Progresso</div>
                 </div>
                 <div>
                   <div className="font-bold">24</div>
-                  <div className="text-muted-foreground">Done</div>
+                  <div className="text-muted-foreground">Concluído</div>
                 </div>
               </div>
             </div>
@@ -284,8 +284,8 @@ const DevelopmentPage = () => {
                 <Folder className="h-5 w-5 text-development-600" />
               </div>
               <div>
-                <CardTitle>Quality Metrics</CardTitle>
-                <CardDescription>Code quality and technical health</CardDescription>
+                <CardTitle>Métricas de Qualidade</CardTitle>
+                <CardDescription>Qualidade do código e saúde técnica</CardDescription>
               </div>
             </div>
           </CardHeader>
@@ -293,14 +293,14 @@ const DevelopmentPage = () => {
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <div className="text-sm text-muted-foreground mb-1">Code Coverage</div>
+                  <div className="text-sm text-muted-foreground mb-1">Cobertura de Código</div>
                   <div className="flex items-center gap-2">
                     <Progress value={87} className="h-2 flex-1" />
                     <span className="text-sm font-medium">87%</span>
                   </div>
                 </div>
                 <div>
-                  <div className="text-sm text-muted-foreground mb-1">Performance Score</div>
+                  <div className="text-sm text-muted-foreground mb-1">Score de Performance</div>
                   <div className="flex items-center gap-2">
                     <Progress value={92} className="h-2 flex-1" />
                     <span className="text-sm font-medium">92</span>
@@ -309,12 +309,12 @@ const DevelopmentPage = () => {
               </div>
               
               <div className="space-y-2">
-                <div className="text-sm text-muted-foreground">Technical Debt</div>
+                <div className="text-sm text-muted-foreground">Débito Técnico</div>
                 <div className="space-y-2">
                   {[
-                    { type: "Critical", count: 2, color: "bg-red-500" },
-                    { type: "High", count: 5, color: "bg-orange-500" },
-                    { type: "Medium", count: 8, color: "bg-yellow-500" }
+                    { type: "Crítico", count: 2, color: "bg-red-500" },
+                    { type: "Alto", count: 5, color: "bg-orange-500" },
+                    { type: "Médio", count: 8, color: "bg-yellow-500" }
                   ].map((debt, index) => (
                     <div key={index} className="flex items-center justify-between p-2 bg-muted/50 rounded">
                       <div className="flex items-center gap-2">
@@ -322,7 +322,7 @@ const DevelopmentPage = () => {
                         <span className="text-sm">{debt.type}</span>
                       </div>
                       <Badge variant="outline" className="text-xs">
-                        {debt.count} items
+                        {debt.count} itens
                       </Badge>
                     </div>
                   ))}
