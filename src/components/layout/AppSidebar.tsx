@@ -1,4 +1,3 @@
-
 "use client"
 
 import { useState } from "react"
@@ -239,7 +238,7 @@ export function AppSidebar() {
                     
                     {/* Sub-items - only show when expanded and module is active */}
                     {!isCollapsed && isModuleActive && item.children && (isGroupExpanded('modules') || isCollapsed) && (
-                      <div className="ml-6 mt-2 space-y-1">
+                      <div className="ml-10 mt-2 space-y-1">
                         {item.children.map((child) => (
                           <SidebarMenuItem key={child.title}>
                             <SidebarMenuButton asChild size="sm">
