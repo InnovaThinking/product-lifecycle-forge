@@ -1,3 +1,4 @@
+
 "use client"
 
 import { useState } from "react"
@@ -136,7 +137,7 @@ export function AppSidebar() {
     <Sidebar
       className={cn(
         "border-r transition-all duration-300",
-        isCollapsed ? "w-16" : "w-72"
+        isCollapsed ? "w-14" : "w-70"
       )}
       collapsible="icon"
     >
