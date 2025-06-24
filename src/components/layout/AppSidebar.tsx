@@ -56,7 +56,7 @@ const moduleItems = [
     children: [
       { title: "Gestão de Hipóteses", url: "/validation/hypotheses" },
       { title: "Experimentos", url: "/validation/experiments" },
-      { title: "Dashboard de Validação", url: "/validation/dashboard" }
+      { title: "Painel de Validação", url: "/validation/dashboard" }
     ]
   },
   { 
@@ -67,9 +67,9 @@ const moduleItems = [
     bgColor: "bg-development-50",
     gradient: "from-development-600/10 to-emerald-600/10",
     children: [
-      { title: "Roadmap do Produto", url: "/development/roadmap" },
+      { title: "Roteiro do Produto", url: "/development/roadmap" },
       { title: "Gestão de Funcionalidades", url: "/development/features" },
-      { title: "Releases", url: "/development/releases" }
+      { title: "Lançamentos", url: "/development/releases" }
     ]
   },
   { 
@@ -101,7 +101,7 @@ const moduleItems = [
 ]
 
 const quickAccess = [
-  { title: "Dashboard", url: "/", icon: Folder },
+  { title: "Painel Principal", url: "/", icon: Folder },
   { title: "Produtos", url: "/products", icon: Image },
   { title: "Configurações", url: "/settings", icon: List }
 ]
@@ -136,7 +136,7 @@ export function AppSidebar() {
   return (
     <Sidebar
       className={cn(
-        "glass-panel border-r-0 transition-all duration-500",
+        "glass-panel border-r transition-all duration-500 relative z-40",
         isCollapsed ? "w-16" : "w-72"
       )}
       collapsible="icon"
