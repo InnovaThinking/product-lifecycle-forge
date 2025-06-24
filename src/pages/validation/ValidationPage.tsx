@@ -1,4 +1,3 @@
-
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
@@ -11,23 +10,23 @@ const ValidationPage = () => {
   const navigate = useNavigate()
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6">
       {/* Header */}
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-3xl font-bold text-validation-700">Central de Validação</h1>
-          <p className="text-muted-foreground mt-2">
+          <h1 className="text-2xl font-bold text-validation-700">Central de Validação</h1>
+          <p className="text-muted-foreground mt-1 text-sm">
             Teste de hipóteses e gestão de experimentos
           </p>
         </div>
-        <Button className="bg-validation-600 hover:bg-validation-700">
+        <Button className="bg-validation-600 hover:bg-validation-700 h-9 px-4 text-sm">
           <Plus className="h-4 w-4 mr-2" />
           Nova Hipótese
         </Button>
       </div>
 
       {/* Stats */}
-      <div className="grid gap-4 md:grid-cols-4">
+      <div className="grid gap-3 md:grid-cols-4">
         <StatsCard
           title="Hipóteses Ativas"
           value="12"
@@ -55,21 +54,21 @@ const ValidationPage = () => {
       </div>
 
       {/* Main Content */}
-      <div className="grid gap-6 lg:grid-cols-3">
+      <div className="grid gap-4 lg:grid-cols-3">
         {/* Hypothesis Management */}
         <Card className="card-hover cursor-pointer" onClick={() => navigate('/validation/hypotheses')}>
-          <CardHeader>
+          <CardHeader className="pb-3">
             <div className="flex items-center gap-2">
-              <div className="p-2 rounded-lg bg-validation-100">
-                <Book className="h-5 w-5 text-validation-600" />
+              <div className="p-1.5 rounded-lg bg-validation-100">
+                <Book className="h-4 w-4 text-validation-600" />
               </div>
               <div>
-                <CardTitle className="text-lg">Gestão de Hipóteses</CardTitle>
-                <CardDescription>Acompanhe e gerencie hipóteses</CardDescription>
+                <CardTitle className="text-base">Gestão de Hipóteses</CardTitle>
+                <CardDescription className="text-xs">Acompanhe e gerencie hipóteses</CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-0">
             <div className="space-y-4">
               <div className="grid grid-cols-3 gap-2 text-center">
                 <div>
@@ -105,19 +104,19 @@ const ValidationPage = () => {
 
         {/* Experiment Design */}
         <Card className="card-hover cursor-pointer" onClick={() => navigate('/validation/experiments')}>
-          <CardHeader>
+          <CardHeader className="pb-3">
             <div className="flex items-center gap-2">
-              <div className="p-2 rounded-lg bg-validation-100">
-                <TestTube className="h-5 w-5 text-validation-600" />
+              <div className="p-1.5 rounded-lg bg-validation-100">
+                <TestTube className="h-4 w-4 text-validation-600" />
               </div>
               <div>
-                <CardTitle className="text-lg">Experimentos Ativos</CardTitle>
-                <CardDescription>Monitore testes em andamento</CardDescription>
+                <CardTitle className="text-base">Experimentos Ativos</CardTitle>
+                <CardDescription className="text-xs">Monitore testes em andamento</CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent>
-            <div className="space-y-3">
+          <CardContent className="pt-0">
+            <div className="space-y-2">
               {[
                 { 
                   name: "Teste A/B do Fluxo de Checkout", 
@@ -141,9 +140,9 @@ const ValidationPage = () => {
                   daysLeft: 1
                 }
               ].map((experiment, index) => (
-                <div key={index} className="space-y-2 p-3 bg-muted/50 rounded-lg">
+                <div key={index} className="space-y-1 p-2 bg-muted/50 rounded-lg">
                   <div className="flex items-center justify-between">
-                    <span className="text-sm font-medium">{experiment.name}</span>
+                    <span className="text-xs font-medium">{experiment.name}</span>
                     <Badge variant="outline" className="text-xs">{experiment.type}</Badge>
                   </div>
                   <div className="space-y-1">
@@ -166,18 +165,18 @@ const ValidationPage = () => {
 
         {/* Validation Dashboard */}
         <Card className="card-hover cursor-pointer" onClick={() => navigate('/validation/dashboard')}>
-          <CardHeader>
+          <CardHeader className="pb-3">
             <div className="flex items-center gap-2">
-              <div className="p-2 rounded-lg bg-validation-100">
-                <BarChart3 className="h-5 w-5 text-validation-600" />
+              <div className="p-1.5 rounded-lg bg-validation-100">
+                <BarChart3 className="h-4 w-4 text-validation-600" />
               </div>
               <div>
-                <CardTitle className="text-lg">Painel de Validação</CardTitle>
-                <CardDescription>Resultados e insights</CardDescription>
+                <CardTitle className="text-base">Painel de Validação</CardTitle>
+                <CardDescription className="text-xs">Resultados e insights</CardDescription>
               </div>
             </div>
           </CardHeader>
-          <CardContent>
+          <CardContent className="pt-0">
             <div className="space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div className="text-center">
@@ -218,24 +217,24 @@ const ValidationPage = () => {
 
       {/* Learning Repository */}
       <Card>
-        <CardHeader>
+        <CardHeader className="pb-3">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <div className="p-2 rounded-lg bg-validation-100">
-                <TrendingUp className="h-5 w-5 text-validation-600" />
+              <div className="p-1.5 rounded-lg bg-validation-100">
+                <TrendingUp className="h-4 w-4 text-validation-600" />
               </div>
               <div>
-                <CardTitle>Repositório de Aprendizados</CardTitle>
-                <CardDescription>Principais insights e lições aprendidas</CardDescription>
+                <CardTitle className="text-base">Repositório de Aprendizados</CardTitle>
+                <CardDescription className="text-xs">Principais insights e lições aprendidas</CardDescription>
               </div>
             </div>
-            <Button variant="outline" size="sm">
+            <Button variant="outline" size="sm" className="h-8 px-3 text-xs">
               Ver Todos os Aprendizados
             </Button>
           </div>
         </CardHeader>
-        <CardContent>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        <CardContent className="pt-0">
+          <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             {[
               {
                 title: "Otimização do Checkout Mobile",
@@ -259,9 +258,9 @@ const ValidationPage = () => {
                 category: "Negócios"
               }
             ].map((learning, index) => (
-              <div key={index} className="p-4 bg-muted/50 rounded-lg space-y-3">
+              <div key={index} className="p-3 bg-muted/50 rounded-lg space-y-2">
                 <div className="flex items-center justify-between">
-                  <h4 className="font-medium text-sm">{learning.title}</h4>
+                  <h4 className="font-medium text-xs">{learning.title}</h4>
                   <Badge 
                     variant={learning.impact === "Alto" ? "default" : "secondary"}
                     className="text-xs"
