@@ -39,11 +39,11 @@ const moduleItems = [
     bgColor: "bg-discovery-50",
     gradient: "from-discovery-600/10 to-blue-600/10",
     children: [
-      { title: "Research Hub", url: "/discovery/research" },
-      { title: "Opportunity Canvas", url: "/discovery/opportunities" },
-      { title: "Market Intelligence", url: "/discovery/market" },
+      { title: "Central de Pesquisa", url: "/discovery/research" },
+      { title: "Canvas de Oportunidades", url: "/discovery/opportunities" },
+      { title: "Inteligência de Mercado", url: "/discovery/market" },
       { title: "Personas", url: "/discovery/personas" },
-      { title: "Journey Maps", url: "/discovery/journeys" }
+      { title: "Mapas de Jornada", url: "/discovery/journeys" }
     ]
   },
   { 
@@ -54,9 +54,9 @@ const moduleItems = [
     bgColor: "bg-validation-50",
     gradient: "from-validation-600/10 to-purple-600/10",
     children: [
-      { title: "Hypothesis Management", url: "/validation/hypotheses" },
-      { title: "Experiments", url: "/validation/experiments" },
-      { title: "Validation Dashboard", url: "/validation/dashboard" }
+      { title: "Gestão de Hipóteses", url: "/validation/hypotheses" },
+      { title: "Experimentos", url: "/validation/experiments" },
+      { title: "Dashboard de Validação", url: "/validation/dashboard" }
     ]
   },
   { 
@@ -67,8 +67,8 @@ const moduleItems = [
     bgColor: "bg-development-50",
     gradient: "from-development-600/10 to-emerald-600/10",
     children: [
-      { title: "Product Roadmap", url: "/development/roadmap" },
-      { title: "Feature Management", url: "/development/features" },
+      { title: "Roadmap do Produto", url: "/development/roadmap" },
+      { title: "Gestão de Funcionalidades", url: "/development/features" },
       { title: "Releases", url: "/development/releases" }
     ]
   },
@@ -81,8 +81,8 @@ const moduleItems = [
     gradient: "from-launch-600/10 to-orange-600/10",
     children: [
       { title: "Go-to-Market", url: "/launch/planning" },
-      { title: "Launch Execution", url: "/launch/execution" },
-      { title: "Post-Launch", url: "/launch/analysis" }
+      { title: "Execução do Lançamento", url: "/launch/execution" },
+      { title: "Pós-Lançamento", url: "/launch/analysis" }
     ]
   },
   { 
@@ -94,16 +94,16 @@ const moduleItems = [
     gradient: "from-management-600/10 to-cyan-600/10",
     children: [
       { title: "Analytics", url: "/management/analytics" },
-      { title: "User Experience", url: "/management/ux" },
-      { title: "Portfolio", url: "/management/portfolio" }
+      { title: "Experiência do Usuário", url: "/management/ux" },
+      { title: "Portfólio", url: "/management/portfolio" }
     ]
   }
 ]
 
 const quickAccess = [
   { title: "Dashboard", url: "/", icon: Folder },
-  { title: "Products", url: "/products", icon: Image },
-  { title: "Settings", url: "/settings", icon: List }
+  { title: "Produtos", url: "/products", icon: Image },
+  { title: "Configurações", url: "/settings", icon: List }
 ]
 
 export function AppSidebar() {
@@ -160,7 +160,7 @@ export function AppSidebar() {
         <SidebarGroup>
           {!isCollapsed && (
             <SidebarGroupLabel className="text-xs font-semibold tracking-wide text-muted-foreground/80 mb-3">
-              Quick Access
+              Acesso Rápido
             </SidebarGroupLabel>
           )}
           <SidebarGroupContent>
@@ -191,7 +191,7 @@ export function AppSidebar() {
               onClick={() => toggleGroup('modules')}
             >
               <SidebarGroupLabel className="text-xs font-semibold tracking-wide text-muted-foreground/80 group-hover:text-foreground transition-colors">
-                Modules
+                Módulos
               </SidebarGroupLabel>
               <div className="transition-transform duration-300 group-hover:scale-110">
                 {isGroupExpanded('modules') ? 

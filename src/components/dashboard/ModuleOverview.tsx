@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom"
 const modules = [
   {
     title: "Descoberta",
-    description: "Research, personas,e oportunidades de mercado",
+    description: "Pesquisa, personas e oportunidades de mercado",
     icon: <Search className="h-6 w-6" />,
     gradient: "bg-gradient-to-br from-discovery-600 to-blue-600",
     url: "/discovery",
@@ -22,7 +22,7 @@ const modules = [
   },
   {
     title: "Desenvolvimento",
-    description: "Roadmap, features e releases",
+    description: "Roadmap, funcionalidades e releases",
     icon: <Code className="h-6 w-6" />,
     gradient: "bg-gradient-to-br from-development-600 to-emerald-600",
     url: "/development",
@@ -30,7 +30,7 @@ const modules = [
   },
   {
     title: "Lançamento",
-    description: "Go-to-market e execução de launches",
+    description: "Go-to-market e execução de lançamentos",
     icon: <Calendar className="h-6 w-6" />,
     gradient: "bg-gradient-to-br from-launch-600 to-orange-600",
     url: "/launch",
@@ -53,8 +53,8 @@ export function ModuleOverview() {
     <div className="space-y-6">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-2xl font-bold">Product Modules</h2>
-          <p className="text-muted-foreground">Manage your product lifecycle across all phases</p>
+          <h2 className="text-2xl font-bold">Módulos do Produto</h2>
+          <p className="text-muted-foreground">Gerencie o ciclo de vida do seu produto em todas as fases</p>
         </div>
       </div>
       
@@ -75,11 +75,11 @@ export function ModuleOverview() {
               <div className="flex items-center justify-between pt-4 border-t border-border/40">
                 <div className="text-center">
                   <div className="text-lg font-bold text-primary">{module.stats.active}</div>
-                  <div className="text-xs text-muted-foreground">Active</div>
+                  <div className="text-xs text-muted-foreground">Ativas</div>
                 </div>
                 <div className="text-center">
                   <div className="text-lg font-bold text-muted-foreground">{module.stats.completed}</div>
-                  <div className="text-xs text-muted-foreground">Completed</div>
+                  <div className="text-xs text-muted-foreground">Concluídas</div>
                 </div>
               </div>
             </ModuleCard>

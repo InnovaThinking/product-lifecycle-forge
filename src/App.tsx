@@ -38,12 +38,12 @@ const App = () => (
                   <Route path="/development" element={<DevelopmentPage />} />
                   <Route path="/development/*" element={<DevelopmentPage />} />
                   {/* Placeholder routes for other modules */}
-                  <Route path="/launch" element={<div className="text-center py-20">Launch Module - Coming Soon</div>} />
-                  <Route path="/launch/*" element={<div className="text-center py-20">Launch Module - Coming Soon</div>} />
-                  <Route path="/management" element={<div className="text-center py-20">Management Module - Coming Soon</div>} />
-                  <Route path="/management/*" element={<div className="text-center py-20">Management Module - Coming Soon</div>} />
-                  <Route path="/products" element={<div className="text-center py-20">Products Page - Coming Soon</div>} />
-                  <Route path="/settings" element={<div className="text-center py-20">Settings Page - Coming Soon</div>} />
+                  <Route path="/launch" element={<div className="text-center py-20">Módulo de Lançamento - Em Breve</div>} />
+                  <Route path="/launch/*" element={<div className="text-center py-20">Módulo de Lançamento - Em Breve</div>} />
+                  <Route path="/management" element={<div className="text-center py-20">Módulo de Gestão - Em Breve</div>} />
+                  <Route path="/management/*" element={<div className="text-center py-20">Módulo de Gestão - Em Breve</div>} />
+                  <Route path="/products" element={<div className="text-center py-20">Página de Produtos - Em Breve</div>} />
+                  <Route path="/settings" element={<div className="text-center py-20">Página de Configurações - Em Breve</div>} />
                   <Route path="*" element={<NotFound />} />
                 </Routes>
               </main>

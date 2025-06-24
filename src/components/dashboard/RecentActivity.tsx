@@ -7,41 +7,41 @@ const activities = [
   {
     id: 1,
     type: "experiment",
-    title: "A/B Test: Checkout Flow Optimization",
-    description: "Experiment completed with 95% confidence",
+    title: "Teste A/B: Otimização do Fluxo de Checkout",
+    description: "Experimento finalizado com 95% de confiança",
     user: { name: "Sarah Chen", avatar: "/placeholder.svg", initials: "SC" },
-    timestamp: "2 minutes ago",
-    status: "Completed",
+    timestamp: "2 minutos atrás",
+    status: "Concluído",
     module: "validation"
   },
   {
     id: 2,
     type: "feature",
-    title: "Mobile Payment Integration",
-    description: "Feature moved to testing phase",
+    title: "Integração de Pagamento Mobile",
+    description: "Funcionalidade movida para fase de testes",
     user: { name: "Mike Johnson", avatar: "/placeholder.svg", initials: "MJ" },
-    timestamp: "1 hour ago",
-    status: "Testing",
+    timestamp: "1 hora atrás",
+    status: "Testando",
     module: "development"
   },
   {
     id: 3,
     type: "release",
-    title: "Version 2.1.0 Release",
-    description: "Release candidate ready for deployment",
+    title: "Release Versão 2.1.0",
+    description: "Candidato a release pronto para deploy",
     user: { name: "Alex Rivera", avatar: "/placeholder.svg", initials: "AR" },
-    timestamp: "3 hours ago",
-    status: "Ready",
+    timestamp: "3 horas atrás",
+    status: "Pronto",
     module: "launch"
   },
   {
     id: 4,
     type: "research",
-    title: "User Interview Insights",
-    description: "New insights added to research hub",
+    title: "Insights de Entrevistas com Usuários",
+    description: "Novos insights adicionados à central de pesquisa",
     user: { name: "Emma Davis", avatar: "/placeholder.svg", initials: "ED" },
-    timestamp: "5 hours ago",
-    status: "Published",
+    timestamp: "5 horas atrás",
+    status: "Publicado",
     module: "discovery"
   }
 ]
@@ -50,9 +50,9 @@ export function RecentActivity() {
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Recent Activity</CardTitle>
+        <CardTitle>Atividade Recente</CardTitle>
         <CardDescription>
-          Latest updates across all product modules
+          Últimas atualizações em todos os módulos do produto
         </CardDescription>
       </CardHeader>
       <CardContent>

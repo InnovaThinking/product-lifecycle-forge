@@ -24,7 +24,7 @@ export function Header() {
           <div className="relative">
             <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
             <Input
-              placeholder="Search products, features, experiments..."
+              placeholder="Buscar produtos, funcionalidades, experimentos..."
               className="pl-9 bg-muted/50 border-0 focus-visible:ring-1"
             />
           </div>
@@ -45,36 +45,36 @@ export function Header() {
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent align="end" className="w-80">
-              <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+              <DropdownMenuLabel>Notificações</DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem className="flex-col items-start p-3">
                 <div className="flex w-full items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-primary"></div>
-                  <span className="font-medium">Experiment Completed</span>
-                  <span className="ml-auto text-xs text-muted-foreground">2m ago</span>
+                  <span className="font-medium">Experimento Finalizado</span>
+                  <span className="ml-auto text-xs text-muted-foreground">2m atrás</span>
                 </div>
                 <p className="text-sm text-muted-foreground mt-1">
-                  A/B test for checkout flow has finished with 95% confidence
+                  Teste A/B do fluxo de checkout finalizado com 95% de confiança
                 </p>
               </DropdownMenuItem>
               <DropdownMenuItem className="flex-col items-start p-3">
                 <div className="flex w-full items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-launch-500"></div>
-                  <span className="font-medium">Release Ready</span>
-                  <span className="ml-auto text-xs text-muted-foreground">1h ago</span>
+                  <span className="font-medium">Release Pronto</span>
+                  <span className="ml-auto text-xs text-muted-foreground">1h atrás</span>
                 </div>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Version 2.1.0 passed all quality gates
+                  Versão 2.1.0 passou por todos os testes de qualidade
                 </p>
               </DropdownMenuItem>
               <DropdownMenuItem className="flex-col items-start p-3">
                 <div className="flex w-full items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-validation-500"></div>
-                  <span className="font-medium">New Hypothesis</span>
-                  <span className="ml-auto text-xs text-muted-foreground">3h ago</span>
+                  <span className="font-medium">Nova Hipótese</span>
+                  <span className="ml-auto text-xs text-muted-foreground">3h atrás</span>
                 </div>
                 <p className="text-sm text-muted-foreground mt-1">
-                  Team created hypothesis for mobile conversion optimization
+                  Equipe criou hipótese para otimização de conversão mobile
                 </p>
               </DropdownMenuItem>
             </DropdownMenuContent>
@@ -85,32 +85,32 @@ export function Header() {
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" className="relative h-8 w-8 rounded-full">
                 <Avatar className="h-8 w-8">
-                  <AvatarImage src="/placeholder.svg" alt="User" />
-                  <AvatarFallback>PM</AvatarFallback>
+                  <AvatarImage src="/placeholder.svg" alt="Usuário" />
+                  <AvatarFallback>GP</AvatarFallback>
                 </Avatar>
               </Button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-56" align="end" forceMount>
               <DropdownMenuLabel className="font-normal">
                 <div className="flex flex-col space-y-1">
-                  <p className="text-sm font-medium leading-none">Product Manager</p>
+                  <p className="text-sm font-medium leading-none">Gerente de Produto</p>
                   <p className="text-xs leading-none text-muted-foreground">
-                    pm@company.com
+                    gp@empresa.com
                   </p>
                 </div>
               </DropdownMenuLabel>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
                 <User className="mr-2 h-4 w-4" />
-                <span>Profile</span>
+                <span>Perfil</span>
               </DropdownMenuItem>
               <DropdownMenuItem>
                 <Settings className="mr-2 h-4 w-4" />
-                <span>Settings</span>
+                <span>Configurações</span>
               </DropdownMenuItem>
               <DropdownMenuSeparator />
               <DropdownMenuItem>
-                Log out
+                Sair
               </DropdownMenuItem>
             </DropdownMenuContent>
           </DropdownMenu>
